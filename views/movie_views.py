@@ -38,4 +38,4 @@ class MovieViews(Resource):
 
     def delete(self, mid):
         movie_schema.dump(movie_service.delete(mid))
-        return "Фильм успешно удалён", 204
+        return "", 204
