@@ -1,15 +1,17 @@
 from flask_restx import Namespace, Resource
 
+from implemented import genre_service, genres_schema, genre_schema
+
 genre_ns = Namespace('genres')
 
 
 @genre_ns.route('/')
 class GenresViews(Resource):
     def get(self):
-        return 'общий список жанров работает', 200
+        return genres_schema.dump(genre_service.get_all()), 200
 
 
 @genre_ns.route('/<int:gid>')
 class GenreViews(Resource):
     def get(self, gid):
-        return 'gid работает', 200
+        return genre_schema.dump(genre_service.get_one(gid)), 200
