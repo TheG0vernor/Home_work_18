@@ -8,11 +8,7 @@ class Director(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
 
-    def das_dict(self):
-        return {'id': self.id,
-                'name': self.name}
 
-
-class DirectorSchema(Schema):  # "Схема" директоров фильмов
+class DirectorSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()

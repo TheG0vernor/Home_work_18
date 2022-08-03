@@ -16,19 +16,8 @@ class Movie(db.Model):
     director_id = db.Column(db.Integer, db.ForeignKey('director.id'))
     director = db.relationship('Director')
 
-    def das_dict(self):
-        return {'id': self.id,
-                'title': self.title,
-                'description': self.description,
-                'trailer': self.trailer,
-                'year': self.year,
-                'rating': self.rating,
-                'genre_id': self.genre_id,
-                'director_id': self.director_id
-                }
 
-
-class MovieSchema(Schema):  # "Схема" фильмов, которая, в том числе укажет жанр и режиссёра
+class MovieSchema(Schema):
     id = fields.Int(dump_only=True)
     title = fields.Str()
     description = fields.Str()
