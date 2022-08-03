@@ -8,14 +8,14 @@ from views.movie_views import movie_ns
 from setup_db import db
 
 
-def create_app(config):
+def create_app(config):  # создаём приложение
     app = Flask(__name__)
     app.config.from_object(config)
     configure_app(app)
     return app
 
 
-def configure_app(app):
+def configure_app(app):  # конфигурируем приложение, api
     db.init_app(app)
     api = Api(app)
     api.add_namespace(movie_ns)
